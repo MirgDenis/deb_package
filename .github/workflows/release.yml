@@ -26,16 +26,16 @@ jobs:
 
       - name: Generate SHA256 checksum
         run: |
-          sha256sum "${{ env.FOLDER_TO_ARCHIVE }}.tar.gz" > "${{ env.FOLDER_TO_ARCHIVE }}.tar.gz.sha256"
+          sha256sum "${{ env.FOLDER_TO_ARCHIVE }}-${{ env.VERSION }}.tar.gz" > "${{ env.FOLDER_TO_ARCHIVE }}-${{ env.VERSION }}.tar.gz.sha256"
 
       - name: Show SHA256 checksum
-        run: cat "${{ env.FOLDER_TO_ARCHIVE }}.tar.gz.sha256"
+        run: cat "${{ env.FOLDER_TO_ARCHIVE }}-${{ env.VERSION }}.tar.gz.sha256"
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
         with:
           files: |
             ${{ env.FOLDER_TO_ARCHIVE }}-${{ env.VERSION }}.tar.gz
-            ${{ env.FOLDER_TO_ARCHIVE }}.tar.gz.sha256
+            ${{ env.FOLDER_TO_ARCHIVE }}-${{ env.VERSION }}.tar.gz.sha256
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
