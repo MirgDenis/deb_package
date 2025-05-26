@@ -1,0 +1,12 @@
+- hosts: all
+  become: yes
+  gather_facts: true
+  tasks:
+  - block:
+    - name: Install a deb package from link
+      apt:
+        deb: {{ item.link }}
+      with_items: "{{ values.packages | default ([]) }}"
+    when:
+      - ansible_distribution == 'Ubuntu'
+      - values.os_version | default ('') in ['', ansible_distribution_version]

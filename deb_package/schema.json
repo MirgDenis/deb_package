@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "definitions": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "properties": {
+    "packages": {
+      "type": "array",
+      "required": ["link"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "link": {
+            "$ref": "#/definitions/nonEmptyString"
+          }
+	}
+      }
+    }
+  }
+}

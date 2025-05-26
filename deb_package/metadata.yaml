@@ -1,0 +1,5 @@
+name: deb_package
+version: 1.0.0
+playbook: main.yaml
+description: 'Module for insallation of deb packages from link'
+valuesJsonSchema: schema.json
